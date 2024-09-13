@@ -2,13 +2,16 @@ import 'express-async-errors';
 
 import path from 'path';
 
+import fallback from '@blocklet/sdk/lib/middlewares/fallback';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenv from 'dotenv-flow';
 import express, { ErrorRequestHandler } from 'express';
-import fallback from '@blocklet/sdk/lib/middlewares/fallback';
 
+import connectMongo from './config/mongo';
 import logger from './libs/logger';
+import globalErrorHandler from './middlewares/error.middleware';
+import responseFormatter from './middlewares/response.middleware';
 import routes from './routes';
 
 dotenv.config();
@@ -23,9 +26,17 @@ app.use(express.json({ limit: '1 mb' }));
 app.use(express.urlencoded({ extended: true, limit: '1 mb' }));
 app.use(cors());
 
+connectMongo();
+
+// Apply response formatter before routes
+app.use(responseFormatter);
+
 const router = express.Router();
 router.use('/api', routes);
 app.use(router);
+
+// Error handling middleware
+app.use(globalErrorHandler);
 
 const isProduction = process.env.NODE_ENV === 'production' || process.env.ABT_NODE_SERVICE_ENV === 'production';
 

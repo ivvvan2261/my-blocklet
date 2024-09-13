@@ -49,12 +49,16 @@
     "cors": "^2.8.5",
     "dotenv-flow": "^4.1.0",
     "express": "^4.19.2",
-    "express-async-errors": "^3.1.1"
+    "express-async-errors": "^3.1.1",
+    "bluebird": "^3.7.2",
+    "express-validator": "^7.2.0",
+    "mongoose": "^8.6.2"
   },
   "devDependencies": {
     "@arcblock/eslint-config": "^0.3.2",
     "@arcblock/eslint-config-ts": "^0.3.2",
     "@blocklet/js-sdk": "^1.16.30",
+    "@types/bluebird": "^3.5.42",
     "@types/cookie-parser": "^1.4.7",
     "@types/cors": "^2.8.17",
     "@types/dotenv-flow": "^3.3.3",

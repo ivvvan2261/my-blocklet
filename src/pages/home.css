@@ -2,44 +2,132 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+}
+
+.profile-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h2 {
   text-align: center;
+  margin-bottom: 20px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-.logo.blocklet:hover {
-  filter: drop-shadow(0 0 2em #22cdcdaa);
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.profile-row {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  margin-bottom: 10px;
+}
+
+.row-name {
+  flex-basis: 18%;
+  text-align: right;
+}
+
+.profile-row input,
+.profile-row span {
+  flex-basis: 52%;
+  text-align: left;
+  width: 100%;
+  padding: 8px;
+  line-height: 1.5;
+  height: 40px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  margin-left: 10px;
+}
+
+.profile-row input {
+  border: 1px solid #ccc;
+}
+
+.profile-row span {
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+}
+
+.error-message {
+  flex-basis: 30%;
+  text-align: left;
+  color: red;
+  font-size: 11px;
+  margin-left: 5px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+button {
+  padding: 10px 15px;
+  cursor: pointer;
+  width: 48%;
+}
+
+/* 响应式处理 */
+@media (max-width: 600px) {
+  .profile-container {
+    padding: 10px;
   }
-  to {
-    transform: rotate(360deg);
+
+  button {
+    width: 100%;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .profile-row {
+    flex-direction: column;
+    align-items: flex-start;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .row-name {
+    text-align: left;
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
 
-.read-the-docs {
-  color: #888;
+  .profile-row input,
+  .profile-row span {
+    width: 100%;
+  }
+
+  .button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .error-message {
+    margin-left: 0;
+    margin-top: 5px;
+  }
 }

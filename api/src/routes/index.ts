@@ -1,14 +1,12 @@
 import middleware from '@blocklet/sdk/lib/middlewares';
 import { Router } from 'express';
 
+import UserController from '../controllers/user.controller';
+import authenticate from '../middlewares/auth.middleware';
+
 const router = Router();
 
-router.use('/user', middleware.user(), (req, res) => res.json(req.user || {}));
-
-router.use('/data', (_, res) =>
-  res.json({
-    message: 'Hello Blocklet!',
-  }),
-);
+router.get('/user', middleware.user(), authenticate, UserController.getUser);
+router.put('/user', middleware.user(), authenticate, UserController.updateUser);
 
 export default router;
